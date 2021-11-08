@@ -2,7 +2,7 @@
 
 namespace C_Sharp_Practice
 {
-    class FindTheI
+    class Module_FindTheI
     {
         public void Start()
         {

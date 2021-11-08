@@ -16,7 +16,7 @@ namespace C_Sharp_Practice
 
                 string[] ModulesNames = new string[] {
                     "1. Game: Find the I.",
-                    "2. Tool: Aspect Ratio Calculator.",
+                    "2. Practice: FizzBuzz",
                     "3. (palceholder)",
                     "e. Exit program"
                 };
@@ -31,8 +31,8 @@ namespace C_Sharp_Practice
 
                 //Compare Input to modules and start module selected
                 if (Input == "e") break;
-                if (Input == "1") new FindTheI().Start();
-                if (Input == "2") new AspectRatioCalculator().Start();
+                if (Input == "1") new Module_FindTheI().Start();
+                if (Input == "2") new Module_FizzBuzz().Start();
                 if (Input == "3") break;
             }
 
