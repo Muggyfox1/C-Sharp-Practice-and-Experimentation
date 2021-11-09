@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Threading.Tasks;
+
 
 namespace C_Sharp_Practice
 {
@@ -15,7 +17,7 @@ namespace C_Sharp_Practice
             "\nMethod 4: modulo comparison and recursion.\n",
             "\nMethod 5: subtraction looping and recursion.\n",
             "\nMethod 6: recursive subtraction and recursion.\n",
-            "\nMethod 7: fast as I can make it.\n"
+            "\nMethod 7: async tasks, modulo comparison, and for loops.\n"
         };
 
         public void Start()
@@ -92,6 +94,7 @@ namespace C_Sharp_Practice
             }
         }
 
+        //stop watch helper methods.
         void RecordResults(Stopwatch Watcher)
         {
             Watcher.Stop();
@@ -109,66 +112,72 @@ namespace C_Sharp_Practice
         }
 
         //modulo comparison and for loop
-        void Method1(int num)
+        static void Method1(int num)
         {
+            string str = "";
             for (int i = 1; i <= num; i++)
             {
                 bool b1 = i % 3 == 0;
                 bool b2 = i % 5 == 0;
 
-                if (b1) Console.Write("Fizz");
-                if (b2) Console.Write("Buzz");
-                if (!b1 && !b2) Console.Write(i);
-                Console.Write(", ");
+                if (b1) str += "Fizz";
+                if (b2) str += "Buzz";
+                if (!b1 && !b2) str += i.ToString();
+                str += ", ";
             }
+            Console.Write(str);
         }
 
         //subtraction looping and a for loop.
-        void Method2(int num)
+        static void Method2(int num)
         {
+            string str = "";
             for (int i = 1; i <= num; i++)
             {
                 float a = i;
                 while (a > 0) a -= 3;
-                if (a == 0) Console.Write("Fizz");
+                if (a == 0) str += "Fizz";
 
                 float b = i;
                 while (b > 0) b -= 5;
-                if (b == 0) Console.Write("Buzz");
+                if (b == 0) str += "Buzz";
 
-                if (a < 0 && b < 0) Console.Write(i);
-                Console.Write(", ");
+                if (a < 0 && b < 0) str += i.ToString();
+                str += ", ";
             }
+            Console.Write(str);
         }
 
         //recursive subtraction and a for loop.
-        void Method3(int num)
+        static void Method3(int num)
         {
+            string str = "";
             for (int i = 1; i <= num; i++)
             {
                 bool b1 = Method3_Recurve(i, 3) == 0;
                 bool b2 = Method3_Recurve(i, 5) == 0;
 
-                if (b1) Console.Write("Fizz");
-                if (b2) Console.Write("Buzz");
-                if (!b1 && !b2) Console.Write(i);
-                Console.Write(", ");
+                if (b1) str += "Fizz";
+                if (b2) str += "Buzz";
+                if (!b1 && !b2) str += i.ToString();
+                str += ", ";
             }
+            Console.Write(str);
         }
 
-        float Method3_Recurve(float f, float iteration)
+        static float Method3_Recurve(float f, float iteration)
         {
             if (!(f <= 0)) f = Method3_Recurve(f - iteration, iteration);
             return f;
         }
 
         //modulo comparison and recursion.
-        void Method4(int num)
+        static void Method4(int num)
         {
             Console.WriteLine(Method4_recurve(1, num));
         }
 
-        string Method4_recurve(int Start, int Stop)
+        static string Method4_recurve(int Start, int Stop)
         {
             string str = "";
 
@@ -187,12 +196,12 @@ namespace C_Sharp_Practice
         }
 
         //subtraction looping and recursion.
-        void Method5(int num)
+        static void Method5(int num)
         {
             Console.WriteLine(Method5_Recurve(1, num));
         }
 
-        string Method5_Recurve(int Start, int Stop)
+        static string Method5_Recurve(int Start, int Stop)
         {
             string str = "";
 
@@ -212,23 +221,23 @@ namespace C_Sharp_Practice
             return str;
         }
 
-        void Method6(int num)
+        //recursive subtraction and recursion.
+        static void Method6(int num)
         {
-            Console.WriteLine(Method6_Recurve(1,num));
+            Console.WriteLine(Method6_Recurve(1, num));
         }
 
-        string Method6_Recurve(int Start, int Stop)
+        static string Method6_Recurve(int Start, int Stop)
         {
             string str = "";
 
-            //this just recycles method 3 \s 
+            //this just recycles the recursive statement from method 3, since I'd just be copying it anyways.
             bool b1 = Method3_Recurve(Start, 3) == 0;
             bool b2 = Method3_Recurve(Start, 5) == 0;
 
-            if (b1) Console.Write("Fizz");
-            if (b2) Console.Write("Buzz");
-            if (!b1 && !b2) Console.Write(Start);
-            Console.Write(", ");
+            if (b1) str += "Fizz";
+            if (b2) str += "Buzz";
+            if (!b1 && !b2) str += Start.ToString();
 
             str += ", ";
             Start++;
@@ -236,12 +245,32 @@ namespace C_Sharp_Practice
             return str;
         }
 
-        //fast as i can get it.
-        void Method7(int num)
+        //faster than before.
+        static async void Method7(int num)
         {
-            //can we track the result via bool? is this faster?
-            //multi threading?
+            var t1 = Method7_Task(1, (int)num / 2 - 1);
+            var t2 = Method7_Task((int)num / 2, num);
+            string str = await t1 + await t2;
+            Console.Write(str);
+        }
+
+        static async Task<string> Method7_Task(int a, int b)
+        {
+            string str = "";
+            for (int i = a; i <= b; i++)
+            {
+                bool b1 = i % 3 == 0;
+                bool b2 = i % 5 == 0;
+
+                if (b1) str += "Fizz";
+                if (b2) str += "Buzz";
+                if (!b1 && !b2) str += i.ToString();
+                str += ", ";
+            }
+            return str;
         }
     }
+
+
 }
 
