@@ -17,7 +17,8 @@ namespace C_Sharp_Practice
             "\nMethod 4: modulo comparison and recursion.\n",
             "\nMethod 5: subtraction looping and recursion.\n",
             "\nMethod 6: recursive subtraction and recursion.\n",
-            "\nMethod 7: async tasks, modulo comparison, and for loops.\n"
+            "\nMethod 7: async tasks, modulo comparison, and for loops.\n",
+            "\nMethod 8: direct counting test.\n"
         };
 
         public void Start()
@@ -57,7 +58,7 @@ namespace C_Sharp_Practice
                 Stopwatch Watcher = new Stopwatch();
                 if (ReportStats)
                 {
-                    for (int i = 0; i < 7; i++)
+                    for (int i = 0; i < 8; i++)
                     {
                         Console.WriteLine(DecorLines.Decor1 + MethodDescriptions[i] + DecorLines.Decor1);
                         Watcher.Start();
@@ -70,6 +71,7 @@ namespace C_Sharp_Practice
                             case 4: Method5(num); break;
                             case 5: Method6(num); break;
                             case 6: Method7(num); break;
+                            case 7: Method8(num); break;
                         }
                         RecordResults(Watcher);
                         Console.WriteLine();
@@ -104,7 +106,7 @@ namespace C_Sharp_Practice
 
         void ReportResults()
         {
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < Results.Count; i++)
             {
                 string result = $"\nMethod {i + 1} took {Results[i]} miliseconds.\n AKA {Results[i] / 1000} seconds.";
                 Console.WriteLine(result);
@@ -268,6 +270,43 @@ namespace C_Sharp_Practice
                 str += ", ";
             }
             return str;
+        }
+
+        //counting... directly.
+        static void Method8(int num)
+        {
+            string[] strs = new string[num];
+            int i;
+            for (i = 0; i < strs.Length; i++) strs[i] = (i+1).ToString();
+            i = 2;
+            while (i < num)
+            {
+                strs[i] = "Fizz";
+                i += 3;
+            }
+            i = 4;
+            while (i < num)
+            {
+                if (strs[i][0] == 'F')
+                {
+                    strs[i] += "Buzz";
+                }
+                else
+                {
+                    strs[i] = "Buzz";
+                }
+                i += 5;
+            }
+
+            string text = "";
+            for (i = 0; i < strs.Length; i++)
+            {
+                text += strs[i] + ", ";
+            }
+            //while(i < num)
+            Console.WriteLine(text);
+
+
         }
     }
 
