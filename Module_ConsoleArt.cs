@@ -11,22 +11,41 @@ namespace C_Sharp_Practice
         
         public void Start()
         {
+            while (true) //Main Loop
+            {
+                Console.ResetColor();
+                Console.Clear();
+                DrawArt(0);
+                Console.WriteLine("Please enter what art piece you would like to see.");
+                Console.WriteLine("1: Hello World");
+                Console.WriteLine("2: Sun Rise");
+                Console.WriteLine("3: Random Static");
+                Console.WriteLine("4: Code Lisa");
+                Console.WriteLine("e: Exit Module");
+
+                string UserInput = "";
+                int UserInt = 0;
+                while(UserInput != "e" && !(UserInt > 0 || UserInt > 5))
+                {
+                    Console.Write("Selection: ");
+                    UserInput = Console.ReadLine();
+                    int.TryParse(UserInput, out UserInt);
+                }
+                Console.Write("Success!");
+                DrawArt(UserInt);
+                break;
+            }
+            
+            Console.ReadLine();
             Console.ResetColor();
             Console.Clear();
+        }
 
-            string[] strs = new string[]{
-            "bwbbwbrrrrbgbbbblbbbbbyybbb",
-            "bwbbwbrbbbbgbbbblbbbbybbybb",
-            "bwwwwbrrrrbgbbbblbbbbybbybb",
-            "bwbbwbrbbbbgbbbblbbbbybbybb",
-            "bwbbwbrrrrbggggbllllbbyybbb",
-            "bbbbbbbbbbbbbbbbbbbbbbbbbbb",
-            "bybybybbllbbgggbbrbbbbwwwbb",
-            "bybybyblbblbgbbgbrbbbbwbbwb",
-            "bybybyblbblbgggbbrbbbbwbbwb",
-            "bybybyblbblbgbbgbrbbbbwbbwb",
-            "bbybybbbllbbgbbgbrrrrbwwwbb"};
-            foreach (string s in strs)
+        void DrawArt(int ArtPiece)
+        {
+            Console.ResetColor();
+            Console.Clear();
+            foreach (string s in ArtPieces[ArtPiece])
             {
                 foreach (char c in s)
                 {
@@ -56,27 +75,80 @@ namespace C_Sharp_Practice
                 Console.BackgroundColor = ConsoleColor.Black;
                 Console.Write("\n");
             }
-            Console.ReadLine();
-            Console.ResetColor();
-            Console.Clear();
         }
-    }
 
-    class Pix
-    {
-        int X = 0;
-        int Y = 0;
-        ConsoleColor FColor = ConsoleColor.White;
-        ConsoleColor BGColor = ConsoleColor.Black;
-        
-        public Pix(int x, int y, ConsoleColor fcolor, ConsoleColor bgcolor)
+        string[][] ArtPieces = new string[][]
         {
-            X = x;
-            Y = y;
-            FColor = fcolor;
-            BGColor = bgcolor;
-        }
-    }
-    
+            //121 is max width //why?
 
+            //Console Art Intro
+            new string[]{
+            "bwbbwbrrrrbgbbbblbbbbbyybbb",
+            "bwbbwbrbbbbgbbbblbbbbybbybb",
+            "bwwwwbrrrrbgbbbblbbbbybbybb",
+            "bwbbwbrbbbbgbbbblbbbbybbybb",
+            "bwbbwbrrrrbggggbllllbbyybbb",
+            "bbbbbbbbbbbbbbbbbbbbbbbbbbb",
+            "bybybybbllbbgggbbrbbbbwwwbb",
+            "bybybyblbblbgbbgbrbbbbwbbwb",
+            "bybybyblbblbgggbbrbbbbwbbwb",
+            "bybybyblbblbgbbgbrbbbbwbbwb",
+            "bbybybbbllbbgbbgbrrrrbwwwbb"},
+
+            //Hello World
+            new string[]{
+            "bwbbwbrrrrbgbbbblbbbbbyybbb",
+            "bwbbwbrbbbbgbbbblbbbbybbybb",
+            "bwwwwbrrrrbgbbbblbbbbybbybb",
+            "bwbbwbrbbbbgbbbblbbbbybbybb",
+            "bwbbwbrrrrbggggbllllbbyybbb",
+            "bbbbbbbbbbbbbbbbbbbbbbbbbbb",
+            "bybybybbllbbgggbbrbbbbwwwbb",
+            "bybybyblbblbgbbgbrbbbbwbbwb",
+            "bybybyblbblbgggbbrbbbbwbbwb",
+            "bybybyblbblbgbbgbrbbbbwbbwb",
+            "bbybybbbllbbgbbgbrrrrbwwwbb"},
+            
+
+            new string[]{
+            "bwbbwbrrrrbgbbbblbbbbbyybbb",
+            "bwbbwbrbbbbgbbbblbbbbybbybb",
+            "bwwwwbrrrrbgbbbblbbbbybbybb",
+            "bwbbwbrbbbbgbbbblbbbbybbybb",
+            "bwbbwbrrrrbggggbllllbbyybbb",
+            "bbbbbbbbbbbbbbbbbbbbbbbbbbb",
+            "bybybybbllbbgggbbrbbbbwwwbb",
+            "bybybyblbblbgbbgbrbbbbwbbwb",
+            "bybybyblbblbgggbbrbbbbwbbwb",
+            "bybybyblbblbgbbgbrbbbbwbbwb",
+            "bbybybbbllbbgbbgbrrrrbwwwbb"},
+            
+            new string[]{
+            "bwbbwbrrrrbgbbbblbbbbbyybbb",
+            "bwbbwbrbbbbgbbbblbbbbybbybb",
+            "bwwwwbrrrrbgbbbblbbbbybbybb",
+            "bwbbwbrbbbbgbbbblbbbbybbybb",
+            "bwbbwbrrrrbggggbllllbbyybbb",
+            "bbbbbbbbbbbbbbbbbbbbbbbbbbb",
+            "bybybybbllbbgggbbrbbbbwwwbb",
+            "bybybyblbblbgbbgbrbbbbwbbwb",
+            "bybybyblbblbgggbbrbbbbwbbwb",
+            "bybybyblbblbgbbgbrbbbbwbbwb",
+            "bbybybbbllbbgbbgbrrrrbwwwbb"},
+
+            new string[]{
+            "bwbbwbrrrrbgbbbblbbbbbyybbb",
+            "bwbbwbrbbbbgbbbblbbbbybbybb",
+            "bwwwwbrrrrbgbbbblbbbbybbybb",
+            "bwbbwbrbbbbgbbbblbbbbybbybb",
+            "bwbbwbrrrrbggggbllllbbyybbb",
+            "bbbbbbbbbbbbbbbbbbbbbbbbbbb",
+            "bybybybbllbbgggbbrbbbbwwwbb",
+            "bybybyblbblbgbbgbrbbbbwbbwb",
+            "bybybyblbblbgggbbrbbbbwbbwb",
+            "bybybyblbblbgbbgbrbbbbwbbwb",
+            "bbybybbbllbbgbbgbrrrrbwwwbb"}
+
+        };
+    }   
 }
