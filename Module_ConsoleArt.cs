@@ -31,8 +31,16 @@ namespace C_Sharp_Practice
                     UserInput = Console.ReadLine();
                     int.TryParse(UserInput, out UserInt);
                 }
-                Console.Write("Success!");
-                DrawArt(UserInt);
+
+                if (UserInt == 4)
+                {
+                    string[] s = System.IO.File.ReadAllLines(@"./ConsoleArt_CodeALisa.txt");
+                    DrawArt(s);
+                }
+                else
+                {
+                    DrawArt(UserInt);
+                }                
                 break;
             }
             
@@ -68,6 +76,102 @@ namespace C_Sharp_Practice
                             break;
                         case 'y':
                             Console.BackgroundColor = ConsoleColor.Yellow;
+                            break;
+                        case 'u':
+                            Console.BackgroundColor = ConsoleColor.DarkBlue;
+                            break;
+                        case 'e':
+                            Console.BackgroundColor = ConsoleColor.DarkGreen;
+                            break;
+                        case 'c':
+                            Console.BackgroundColor = ConsoleColor.DarkCyan;
+                            break;
+                        case 'd':
+                            Console.BackgroundColor = ConsoleColor.DarkRed;
+                            break;
+                        case 'm':
+                            Console.BackgroundColor = ConsoleColor.DarkMagenta;
+                            break;
+                        case 'k':
+                            Console.BackgroundColor = ConsoleColor.DarkYellow;
+                            break;
+                        case 'a':
+                            Console.BackgroundColor = ConsoleColor.Gray;
+                            break;
+                        case 'z':
+                            Console.BackgroundColor = ConsoleColor.DarkGray;
+                            break;
+                        case 'x':
+                            Console.BackgroundColor = ConsoleColor.Cyan;
+                            break;
+                        case 'v':
+                            Console.BackgroundColor = ConsoleColor.Magenta;
+                            break;
+                    }
+                    Console.Write(" ");
+                }
+                Console.BackgroundColor = ConsoleColor.Black;
+                Console.Write("\n");
+            }
+        }
+
+        void DrawArt(string[] Strings)
+        {
+            Console.ResetColor();
+            Console.Clear();
+            foreach (string s in Strings)
+            {
+                foreach (char c in s)
+                {
+                    switch (c)
+                    {
+                        case 'w':
+                            Console.BackgroundColor = ConsoleColor.White;
+                            break;
+                        case 'b':
+                            Console.BackgroundColor = ConsoleColor.Black;
+                            break;
+                        case 'r':
+                            Console.BackgroundColor = ConsoleColor.Red;
+                            break;
+                        case 'g':
+                            Console.BackgroundColor = ConsoleColor.Green;
+                            break;
+                        case 'l':
+                            Console.BackgroundColor = ConsoleColor.Blue;
+                            break;
+                        case 'y':
+                            Console.BackgroundColor = ConsoleColor.Yellow;
+                            break;
+                        case 'u':
+                            Console.BackgroundColor = ConsoleColor.DarkBlue;
+                            break;
+                        case 'e':
+                            Console.BackgroundColor = ConsoleColor.DarkGreen;
+                            break;
+                        case 'c':
+                            Console.BackgroundColor = ConsoleColor.DarkCyan;
+                            break;
+                        case 'd':
+                            Console.BackgroundColor = ConsoleColor.DarkRed;
+                            break;
+                        case 'm':
+                            Console.BackgroundColor = ConsoleColor.DarkMagenta;
+                            break;
+                        case 'k':
+                            Console.BackgroundColor = ConsoleColor.DarkYellow;
+                            break;
+                        case 'a':
+                            Console.BackgroundColor = ConsoleColor.Gray;
+                            break;
+                        case 'z':
+                            Console.BackgroundColor = ConsoleColor.DarkGray;
+                            break;
+                        case 'x':
+                            Console.BackgroundColor = ConsoleColor.Cyan;
+                            break;
+                        case 'v':
+                            Console.BackgroundColor = ConsoleColor.Magenta;
                             break;
                     }
                     Console.Write(" ");
