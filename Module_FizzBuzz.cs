@@ -219,7 +219,7 @@ namespace C_Sharp_Practice
 
             str += ", ";
             Start++;
-            if (Start <= Stop) str += Method4_recurve(Start, Stop);
+            if (Start <= Stop) str += Method5_recurve(Start, Stop);
             return str;
         }
 
@@ -243,7 +243,7 @@ namespace C_Sharp_Practice
 
             str += ", ";
             Start++;
-            if (Start <= Stop) str += Method4_recurve(Start, Stop);
+            if (Start <= Stop) str += Method6_recurve(Start, Stop);
             return str;
         }
 
@@ -305,11 +305,6 @@ namespace C_Sharp_Practice
             }
             //while(i < num)
             Console.WriteLine(text);
-
-
         }
     }
-
-
 }
-
